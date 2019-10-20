@@ -533,6 +533,9 @@ def main():
         "-d", "--debug", help="Include debug build", action="store_true"
     )
     parser.add_argument(
+        "--configuration", help="Target configuration", action="store", choices=("debug", "release")
+    )
+    parser.add_argument(
         "-p",
         "--precompile",
         help="Include .pyc files instead of .py",
@@ -562,6 +565,8 @@ def main():
 
     ns = parser.parse_args()
     update_presets(ns)
+    if ns.configuration == "debug":
+        ns.debug = True
 
     ns.source = ns.source or (Path(__file__).resolve().parent.parent.parent)
     ns.build = ns.build or Path(sys.executable).parent
