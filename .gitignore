@@ -113,3 +113,6 @@ Tools/ssl/win32
 .vs/
 .vscode/
 gmon.out
+
+# Generated as part of the Smode's python external project install step.
+/tmp/
